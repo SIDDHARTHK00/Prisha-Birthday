@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#120712">
+<meta name="description" content="A little birthday surprise for Prisha ❤️">
+<title>For Prisha ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap');
+:root{--bg:#10070f;--pink:#ff6fae;--rose:#ffb0cf;--cream:#fff4f8;--muted:#d8bccb;--glass:rgba(255,255,255,.08)}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--cream);font-family:"DM Sans",sans-serif}
+body{background:radial-gradient(circle at 50% 20%,#381329 0,#170a15 45%,#080508 100%)}
+#stars,.hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.7;animation:twinkle 2.8s infinite ease-in-out}
+@keyframes twinkle{50%{opacity:.15;transform:scale(.5)}}
+.heart{position:absolute;font-size:16px;opacity:0;animation:floatUp linear forwards}
+@keyframes floatUp{0%{transform:translateY(15vh) scale(.7);opacity:0}15%{opacity:.7}100%{transform:translateY(-115vh) translateX(var(--drift)) rotate(25deg);opacity:0}}
+#app{height:100%;position:relative}
+.page{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:26px 18px 80px;opacity:0;visibility:hidden;transform:translateX(35px) scale(.985);transition:opacity .55s ease,transform .55s ease,visibility .55s}
+.page.active{opacity:1;visibility:visible;transform:none}
+.inner{width:min(100%,720px);height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;z-index:2}
+.eyebrow{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#ff9fc4;margin-bottom:12px}
+h1,h2{font-family:"Cormorant Garamond",serif;font-weight:600;margin:0;line-height:.95}
+h1{font-size:clamp(54px,15vw,110px)}
+h2{font-size:clamp(42px,11vw,76px)}
+.script{font-family:"Great Vibes",cursive;color:#ff9fc4;font-size:clamp(44px,12vw,78px);font-weight:400}
+.subtitle{max-width:580px;color:var(--muted);font-size:15px;line-height:1.8;margin:18px auto 0}
+.btn{border:1px solid rgba(255,176,207,.5);background:rgba(255,105,163,.12);color:white;border-radius:999px;padding:13px 23px;margin-top:24px;font-weight:600;cursor:pointer;backdrop-filter:blur(12px);transition:.25s}
+.btn:hover{background:rgba(255,105,163,.25);transform:translateY(-2px)}
+.progress{position:fixed;top:15px;left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:6px}
+.dot{width:7px;height:7px;border-radius:50%;background:#684054;transition:.3s}.dot.on{width:23px;border-radius:8px;background:#ff7cad}
+.nav{position:fixed;bottom:17px;left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:9px;align-items:center}
+.nav button{width:42px;height:42px;border-radius:50%;border:1px solid #6e4359;background:#1b0d18;color:white;font-size:18px;cursor:pointer}
+.nav .next{width:auto;padding:0 17px;border-radius:24px;font-size:13px}
+.hidden{display:none!important}
+
+/* page 1 */
+.big-heart{width:115px;height:115px;margin-bottom:20px;position:relative;filter:drop-shadow(0 0 30px rgba(255,105,163,.45));animation:pulse 2.2s infinite}
+.big-heart:before,.big-heart:after{content:"";position:absolute;top:15px;width:64px;height:94px;border-radius:60px 60px 0 0;background:linear-gradient(135deg,#ff9fc4,#e83e82);transform:rotate(-45deg);transform-origin:0 100%}
+.big-heart:after{left:52px;transform:rotate(45deg);transform-origin:100% 100%}
+@keyframes pulse{50%{transform:scale(1.06)}}
+.countdown{display:flex;gap:8px;margin-top:24px}.time{min-width:62px;padding:9px 7px;border:1px solid #573044;border-radius:14px;background:rgba(255,255,255,.045)}.time b{display:block;font-size:21px}.time small{font-size:9px;letter-spacing:1px;color:#bd9aaa}
+
+/* page 2 */
+.letter{width:min(100%,570px);padding:31px 25px;border:1px solid #5c354a;border-radius:24px;background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,105,163,.035));box-shadow:0 20px 80px rgba(0,0,0,.3);text-align:left}
+.letter p{font-family:"Cormorant Garamond",serif;font-size:22px;line-height:1.55;margin:0;color:#ffeaf2}
+.signature{font-family:"Great Vibes";font-size:36px;color:#ff9fc4;text-align:right;margin-top:15px}
+
+/* page 3 */
+.gallery{width:min(100%,650px);display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:24px}
+.photo{height:125px;border-radius:13px;overflow:hidden;border:1px solid rgba(255,255,255,.15);background:#21121d;cursor:pointer;position:relative}
+.photo img{width:100%;height:100%;object-fit:cover;transition:.45s}.photo:hover img{transform:scale(1.08)}
+.photo span{position:absolute;left:7px;bottom:6px;font-size:10px;background:rgba(0,0,0,.45);padding:3px 6px;border-radius:20px}
+@media(max-width:520px){.gallery{grid-template-columns:repeat(2,1fr);max-height:53vh;overflow:auto;padding:3px}.photo{height:150px}.gallery .photo:last-child{grid-column:span 2;height:175px}}
+
+/* page 4 */
+.reasons{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:min(100%,620px);margin-top:25px}
+.reason{padding:19px 14px;border:1px solid #573044;border-radius:18px;background:rgba(255,255,255,.055);transform:translateY(12px);opacity:0;transition:.5s}
+.active .reason{transform:none;opacity:1}.active .reason:nth-child(2){transition-delay:.08s}.active .reason:nth-child(3){transition-delay:.16s}.active .reason:nth-child(4){transition-delay:.24s}.active .reason:nth-child(5){transition-delay:.32s}.active .reason:nth-child(6){transition-delay:.4s}
+.reason b{display:block;margin-bottom:6px}.reason span{font-size:12px;color:#cdb1bf}
+
+/* page 5 cake */
+.cake-area{position:relative;width:300px;height:260px;margin-top:10px}
+.cake{position:absolute;left:50%;bottom:35px;transform:translateX(-50%);width:220px}
+.layer{height:62px;border-radius:12px;background:linear-gradient(#ff8fba,#d94d87);box-shadow:inset 0 -8px 0 rgba(0,0,0,.08);position:relative}.layer:nth-child(2){width:190px;margin:auto;height:45px;background:linear-gradient(#ffb0cf,#ea6b9e)}.layer:nth-child(3){width:165px;margin:auto;height:42px;background:linear-gradient(#ffd0df,#f28aae)}
+.creamline{position:absolute;top:-7px;left:8px;right:8px;height:15px;border-radius:50%;background:#fff2f7}
+.candles{position:absolute;bottom:145px;left:0;right:0;display:flex;justify-content:center;gap:26px}
+.candle{width:11px;height:55px;border-radius:6px;background:repeating-linear-gradient(135deg,#fff 0 7px,#ff78aa 7px 13px);position:relative}
+.flame{position:absolute;width:15px;height:23px;border-radius:50% 50% 50% 50%;background:#ffd36e;left:-2px;top:-22px;box-shadow:0 0 18px #ffb347;animation:flicker .18s infinite alternate}
+@keyframes flicker{to{transform:scale(.8) translateY(2px)}}
+.blown .flame{display:none}.confetti{position:fixed;inset:0;pointer-events:none;z-index:50}
+.conf{position:absolute;width:7px;height:15px;animation:fall 2.5s ease-out forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+
+/* page 6 */
+.envelope{width:min(100%,420px);height:260px;position:relative;margin-top:28px;cursor:pointer;perspective:900px}
+.env-body{position:absolute;inset:0;background:#f6d8e5;border-radius:12px;box-shadow:0 25px 70px rgba(0,0,0,.35);overflow:hidden}
+.env-body:before,.env-body:after{content:"";position:absolute;bottom:0;width:0;height:0;border-style:solid}
+.env-body:before{left:0;border-width:130px 210px 0;border-color:#eeb9ce transparent transparent}.env-body:after{right:0;border-width:130px 210px 0;border-color:#d99ab6 transparent transparent}
+.flap{position:absolute;z-index:3;top:0;left:0;width:0;height:0;border-left:210px solid transparent;border-right:210px solid transparent;border-top:140px solid #ffddea;transform-origin:top;transition:.8s}
+.seal{position:absolute;z-index:5;left:50%;top:95px;transform:translateX(-50%);width:58px;height:58px;border-radius:50%;background:#c93670;display:grid;place-items:center;color:white;font-size:22px;box-shadow:0 5px 20px #9a2857;transition:.5s}
+.envelope.open .flap{transform:rotateX(180deg);z-index:1}.envelope.open .seal{opacity:0;transform:translateX(-50%) scale(.5)}
+.secret{position:absolute;inset:15px;z-index:2;background:#fff8fb;color:#4d1d34;border-radius:10px;padding:28px 23px;opacity:0;transform:translateY(30px);transition:.8s;overflow:auto;text-align:left}
+.envelope.open .secret{opacity:1;transform:translateY(-125px);height:330px}
+.secret h3{font-family:"Great Vibes";font-size:37px;color:#c93670;margin:0 0 12px}.secret p{font-family:"Cormorant Garamond";font-size:19px;line-height:1.45;margin:0}
+
+/* page 7 */
+.final-name{font-family:"Great Vibes";font-size:clamp(72px,20vw,145px);color:#ff9fc4;text-shadow:0 0 35px rgba(255,105,163,.35)}
+.firework{position:absolute;width:6px;height:6px;border-radius:50%;animation:burst 1.5s ease-out infinite}
+@keyframes burst{0%{box-shadow:0 0 #ff9fc4;opacity:1}100%{box-shadow:0 -90px #ff9fc4,70px -50px #ffd0df,90px 15px #ff78aa,45px 80px #fff, -40px 80px #ffb0cf,-85px 20px #fff,-65px -55px #ff78aa;opacity:0}}
+.final-msg{font-family:"Cormorant Garamond";font-size:22px;line-height:1.45;color:#ffe6f0;max-width:600px}
+.audio-note{font-size:10px;color:#9f8190;margin-top:10px}
+@media(max-height:700px){.page{padding-bottom:70px}.subtitle{margin-top:10px}.gallery{max-height:48vh}.letter{max-height:60vh;overflow:auto}.cake-area{transform:scale(.85)}}
+</style>
+</head>
+<body>
+<div id="stars"></div><div class="hearts" id="hearts"></div><div class="confetti" id="confetti"></div>
+
+<div class="progress" id="progress"></div>
+
+<main id="app">
+<section class="page active" data-page="1"><div class="inner">
+  <div class="big-heart"></div>
+  <div class="eyebrow">A little surprise • 30 September 2026</div>
+  <div class="script">For Prisha</div>
+  <h1>❤️</h1>
+  <p class="subtitle">Some birthdays deserve more than a “Happy Birthday” message.<br>So I made you a tiny journey.</p>
+  <div class="countdown" id="countdown"></div>
+  <button class="btn" onclick="nextPage()">Open Your Surprise ✨</button>
+</div></section>
+
+<section class="page" data-page="2"><div class="inner">
+  <div class="eyebrow">A message from my heart</div><h2>For you, Prisha…</h2>
+  <div class="letter" style="margin-top:22px">
+    <p id="typedLetter"></p>
+    <div class="signature">— Yours ❤️</div>
+  </div>
+</div></section>
+
+<section class="page" data-page="3"><div class="inner">
+  <div class="eyebrow">A few moments I want to keep</div><h2>10 Little Moments</h2>
+  <p class="subtitle">Tap a photo. Every picture has a little piece of you in it. ❤️</p>
+  <div class="gallery" id="gallery"></div>
+</div></section>
+
+<section class="page" data-page="4"><div class="inner">
+  <div class="eyebrow">There are many reasons</div><h2>Why You're Special</h2>
+  <div class="reasons">
+    <div class="reason">💗 <b>Your Smile</b><span>It can turn an ordinary moment into a beautiful one.</span></div>
+    <div class="reason">🌸 <b>Your Nature</b><span>The little things you do say more than words.</span></div>
+    <div class="reason">🥰 <b>Your Cuteness</b><span>Especially when you don't even realize you're being cute.</span></div>
+    <div class="reason">✨ <b>Your Presence</b><span>Some people simply make everything feel better.</span></div>
+    <div class="reason">😂 <b>Your Crazy Side</b><span>The part that makes our moments unforgettable.</span></div>
+    <div class="reason">❤️ <b>Simply You</b><span>And honestly, that's my favourite reason.</span></div>
+  </div>
+  <p class="subtitle" style="margin-top:22px">“I don't need a reason to love you. You are the reason.”</p>
+</div></section>
+
+<section class="page" data-page="5"><div class="inner">
+  <div class="eyebrow">Make a wish, birthday girl</div><h2>Your Cake 🎂</h2>
+  <p class="subtitle">Close your eyes for a second. Think of one wish.<br>Then tap the button and let the magic happen.</p>
+  <div class="cake-area">
+    <div class="candles"><div class="candle"><i class="flame"></i></div><div class="candle"><i class="flame"></i></div><div class="candle"><i class="flame"></i></div></div>
+    <div class="cake"><div class="layer"><div class="creamline"></div></div><div class="layer"></div><div class="layer"></div></div>
+  </div>
+  <button class="btn" id="wishBtn" onclick="makeWish()">MAKE A WISH ✨</button>
+</div></section>
+
+<section class="page" data-page="6"><div class="inner">
+  <div class="eyebrow">One last thing before the finale</div><h2>A Secret Letter 💌</h2>
+  <p class="subtitle">This one isn't meant to be opened without a little curiosity.</p>
+  <div class="envelope" id="envelope" onclick="openLetter()">
+    <div class="env-body"></div>
+    <div class="secret"><h3>My Dearest Prisha,</h3>
+      <p>I don't know what the future has written for us, but I know one thing — every moment with you is something I want to remember.<br><br>
+      Thank you for being you. Thank you for the smiles, the silly moments, the comfort, and for becoming such a beautiful part of my life.<br><br>
+      On your birthday, I only wish that life gives you countless reasons to smile, dreams that come true, and a heart that always feels loved.<br><br>
+      <b>Happy Birthday, meri jaan. ❤️</b><br><br>
+      And if I get to be beside you through some of those beautiful moments… I'll consider myself lucky.</p>
+    </div>
+    <div class="flap"></div><div class="seal">❤</div>
+  </div>
+  <div class="audio-note">Tap the envelope to open it.</div>
+</div></section>
+
+<section class="page" data-page="7"><div class="inner">
+  <div class="eyebrow">And finally…</div>
+  <div class="firework" style="left:22%;top:28%"></div><div class="firework" style="right:22%;top:32%;animation-delay:.5s"></div>
+  <div class="script">Happy Birthday</div>
+  <div class="final-name">Prisha</div>
+  <p class="final-msg">May your smile always be brighter than every candle on your cake.<br>
+  May you get everything your heart quietly wishes for.<br><br>
+  <b>Keep smiling. Keep shining. Keep being you. ❤️</b><br><br>
+  I Love You, Meri Jaan. ❤️</p>
+  <button class="btn" onclick="restart()">Replay Your Surprise ↻</button>
+</div></section>
+</main>
+
+<div class="nav">
+  <button onclick="prevPage()" aria-label="Previous">‹</button>
+  <button class="next" onclick="nextPage()">Next surprise →</button>
+</div>
+
+<script>
+const photos = [
+  ["assets/photo1.jpg","That smile ❤️"],["assets/photo2.jpg","That look ✨"],
+  ["assets/photo3.jpg","Beautiful you 🌸"],["assets/photo4.jpg","Little moments 🥰"],
+  ["assets/photo5.jpg","Just being you 💗"],["assets/photo6.jpg","A happy moment ☀️"],
+  ["assets/photo7.jpg","That glow ✨"],["assets/photo8.jpg","Your cute side 😌"],
+  ["assets/photo9.jpg","A memory to keep 📸"],["assets/photo10.jpg","Simply Prisha ❤️"]
+];
+let page=1, audioCtx=null, melodyTimer=null;
+
+function makeStars(){
+  const s=document.getElementById('stars');
+  for(let i=0;i<90;i++){const e=document.createElement('i');e.className='star';e.style.left=Math.random()*100+'%';e.style.top=Math.random()*100+'%';e.style.animationDelay=Math.random()*3+'s';s.appendChild(e)}
+}
+function heart(){
+  const h=document.createElement('div');h.className='heart';h.textContent=['♥','♡','✦','❤'][Math.floor(Math.random()*4)];
+  h.style.left=Math.random()*100+'%';h.style.bottom='-30px';h.style.setProperty('--drift',(Math.random()*140-70)+'px');h.style.animationDuration=(7+Math.random()*6)+'s';
+  document.getElementById('hearts').appendChild(h);setTimeout(()=>h.remove(),14000);
+}
+setInterval(heart,650); makeStars();
+
+function buildProgress(){const p=document.getElementById('progress');for(let i=1;i<=7;i++){let d=document.createElement('i');d.className='dot';d.dataset.n=i;p.appendChild(d)}}
+function updateProgress(){document.querySelectorAll('.dot').forEach(d=>d.classList.toggle('on',+d.dataset.n===page))}
+function showPage(n){
+  page=Math.max(1,Math.min(7,n));
+  document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',+x.dataset.page===page));
+  updateProgress();
+  document.querySelector('.nav .next').textContent=page===7?'Replay ↻':'Next surprise →';
+  if(page===2) typeLetter();
+  if(page===3) buildGallery();
+  if(page===7) celebration();
+}
+function nextPage(){ if(page===7){restart();return} showPage(page+1); }
+function prevPage(){showPage(page-1)}
+function restart(){showPage(1);document.getElementById('envelope').classList.remove('open');document.querySelector('.cake-area').classList.remove('blown');document.getElementById('wishBtn').textContent='MAKE A WISH ✨'}
+document.querySelectorAll('.page').forEach(x=>x.addEventListener('click',()=>startAudio()));
+
+function startAudio(){
+  if(audioCtx) return;
+  try{
+    audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    const master=audioCtx.createGain();master.gain.value=.035;master.connect(audioCtx.destination);
+    const notes=[261.63,329.63,392,329.63,293.66,349.23,440,349.23];
+    let i=0;
+    melodyTimer=setInterval(()=>{
+      if(!audioCtx)return;
+      const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=notes[i++%notes.length];
+      g.gain.setValueAtTime(0,audioCtx.currentTime);g.gain.linearRampToValueAtTime(.9,audioCtx.currentTime+.05);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+1.8);
+      o.connect(g);g.connect(master);o.start();o.stop(audioCtx.currentTime+1.9);
+    },850);
+  }catch(e){}
+}
+
+const message=`Meri jaan, tum mere liye bahut special ho.
+Tumhari smile, tumhari little little baatein, tumhara saath — pata nahi kab ye sab meri life ka itna beautiful part ban gaya.
+
+Bas ek wish hai… tum hamesha aise hi smile karti raho, tumhare dreams poore hon, aur tumhari life mein happiness kabhi kam na ho.
+
+Thank you for being you. ❤️`;
+let typedDone=false;
+function typeLetter(){
+  if(typedDone)return; typedDone=true; const el=document.getElementById('typedLetter');let i=0;
+  const t=setInterval(()=>{el.textContent=message.slice(0,i++);if(i>message.length)clearInterval(t)},18)
+}
+
+function buildGallery(){
+  const g=document.getElementById('gallery');if(g.children.length)return;
+  photos.forEach((p,i)=>{let d=document.createElement('div');d.className='photo';d.innerHTML=`<img src="${p[0]}" alt="Prisha memory ${i+1}" loading="lazy"><span>${p[1]}</span>`;d.onclick=()=>zoomPhoto(p[0],p[1]);g.appendChild(d)})
+}
+function zoomPhoto(src,caption){
+  const box=document.createElement('div');box.style.cssText='position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.88);display:grid;place-items:center;padding:25px;cursor:pointer;backdrop-filter:blur(8px)';
+  box.innerHTML=`<div style="max-width:720px;text-align:center"><img src="${src}" style="max-width:100%;max-height:78vh;border-radius:18px;box-shadow:0 20px 70px #000"><div style="margin-top:12px;color:#ffd7e7;font-family:Cormorant Garamond;font-size:24px">${caption}</div></div>`;
+  box.onclick=()=>box.remove();document.body.appendChild(box)
+}
+function makeWish(){
+  document.querySelector('.cake-area').classList.add('blown');
+  document.querySelectorAll('.flame').forEach(f=>f.style.display='none');
+  document.getElementById('wishBtn').textContent='Wish sent to the universe! 🌟';
+  confetti();
+}
+function confetti(){
+  const c=document.getElementById('confetti');c.innerHTML='';
+  for(let i=0;i<110;i++){let e=document.createElement('i');e.className='conf';e.style.left=Math.random()*100+'%';e.style.top=(-10-Math.random()*20)+'%';e.style.background=['#ff78aa','#ffd0df','#fff','#f5c76b','#cda7ff'][Math.floor(Math.random()*5)];e.style.animationDelay=Math.random()*.5+'s';e.style.transform=`rotate(${Math.random()*180}deg)`;c.appendChild(e)}
+  setTimeout(()=>c.innerHTML='',3500)
+}
+function celebration(){confetti();for(let i=0;i<20;i++)setTimeout(heart,i*80)}
+function countdown(){
+  const el=document.getElementById('countdown'), target=new Date('2026-09-30T00:00:00+05:30');
+  function tick(){let d=target-new Date();if(d<=0){el.innerHTML='<div class="time"><b>🎂</b><small>TODAY</small></div>';return}
+  let days=Math.floor(d/86400000);d%=86400000;let hrs=Math.floor(d/3600000);d%=3600000;let min=Math.floor(d/60000);d%=60000;let sec=Math.floor(d/1000);
+  el.innerHTML=[[''+days,'DAYS'],[''+hrs,'HOURS'],[''+min,'MIN'],[''+sec,'SEC']].map(x=>`<div class="time"><b>${x[0].padStart(2,'0')}</b><small>${x[1]}</small></div>`).join('')}
+  tick();setInterval(tick,1000)
+}
+function openLetter(){document.getElementById('envelope').classList.toggle('open');if(document.getElementById('envelope').classList.contains('open'))confetti()}
+buildProgress();updateProgress();countdown();
+</script>
+</body>
+</html>
